@@ -127,6 +127,7 @@ int				parse_file(char *filename, t_game *game);
 void			free_game(t_game *game);
 int				file_exists(char *file_path);
 int				is_map_line(char *line);
+int				is_numeric(char *str);
 /********** Error Messages **********/
 
 #endif // CUB3D_H
