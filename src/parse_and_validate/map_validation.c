@@ -1,4 +1,5 @@
 #include "../../include/cub3d.h"
+#include <stdio.h>
 
 int	validate_textures(t_game *game)
 {
@@ -33,6 +34,7 @@ static int	validate_map_helper(t_game *game, int i, int j, int *count)
 		{
 			ft_putstr_fd("Error\nMap is not surrounded by walls\n",
 				STDERR_FILENO);
+			printf("Coordinates: (%d, %d)\n", i, j);
 			return (ZERO);
 		}
 	}
@@ -44,6 +46,7 @@ static int	validate_map_helper(t_game *game, int i, int j, int *count)
 		{
 			ft_putstr_fd("Error\nMap is not surrounded by walls\n",
 				STDERR_FILENO);
+			printf("Coordinates: (%d, %d)\n", i, j);
 			return (ZERO);
 		}
 	}
@@ -57,21 +60,10 @@ int	is_map_valid(t_game *game)
 	int	count;
 
 	count = i = 0;
-	// while (i < game->map.height)
-	// {
-	// 	j = 0;
-	// 	while (j < game->map.width)
-	// 	{
-	// 		if (!validate_map_helper(game, i, j, &count))
-	// 			return (ZERO);
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
-	while(game->map.grid[i])
+	while (game->map.grid[i])
 	{
 		j = 0;
-		while(game->map.grid[i][j])
+		while (game->map.grid[i][j])
 		{
 			if (!validate_map_helper(game, i, j, &count))
 				return (ZERO);
