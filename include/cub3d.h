@@ -129,6 +129,7 @@ int				file_exists(char *file_path);
 int				is_map_line(char *line);
 int				is_numeric(char *str);
 int				is_player_pos(char c);
+int 			is_map_valid(t_game *game);
 /********** Error Messages **********/
 
 #endif // CUB3D_H
