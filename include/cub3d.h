@@ -128,6 +128,7 @@ void			free_game(t_game *game);
 int				file_exists(char *file_path);
 int				is_map_line(char *line);
 int				is_numeric(char *str);
+int				is_player_pos(char c);
 /********** Error Messages **********/
 
 #endif // CUB3D_H
