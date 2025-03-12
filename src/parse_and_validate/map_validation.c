@@ -20,6 +20,8 @@ static int	validate_map_helper(t_game *game, int i, int j, int *count)
 	if (!is_valid_map_char(c))
 	{
 		ft_putstr_fd("Error\nInvalid character in map\n", STDERR_FILENO);
+		// print coordinates of invalid character
+		printf("Coordinates: (%d, %d)\n", i, j);
 		return (ZERO);
 	}
 	if (is_player_pos(c))
@@ -55,10 +57,21 @@ int	is_map_valid(t_game *game)
 	int	count;
 
 	count = i = 0;
-	while (i < game->map.height)
+	// while (i < game->map.height)
+	// {
+	// 	j = 0;
+	// 	while (j < game->map.width)
+	// 	{
+	// 		if (!validate_map_helper(game, i, j, &count))
+	// 			return (ZERO);
+	// 		j++;
+	// 	}
+	// 	i++;
+	// }
+	while(game->map.grid[i])
 	{
 		j = 0;
-		while (j < game->map.width)
+		while(game->map.grid[i][j])
 		{
 			if (!validate_map_helper(game, i, j, &count))
 				return (ZERO);

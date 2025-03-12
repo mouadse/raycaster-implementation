@@ -47,6 +47,13 @@ int	main(void)
 			write(1, &game->map.grid[i][j], 1);
 		write(1, "\n", 1);
 	}
+	// Validate the map
+	if (!is_map_valid(game))
+	{
+		ft_putstr_fd("Error\nMap is not valid\n", STDERR_FILENO);
+	}else{
+		ft_putstr_fd("Map is valid\n", STDOUT_FILENO);
+	}
 	// Free the map
 	for (int i = 0; i < 19; i++)
 		free(game->map.grid[i]);
