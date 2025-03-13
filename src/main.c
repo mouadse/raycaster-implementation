@@ -8,10 +8,10 @@ int	main(void)
 	char			del;
 
 	// Time to test process_rgb
-	// rgb_color = "F 10,20,30";
-	// original = "F 255,255,255";
-	rgb_color = NULL; // This will trigger a segfault
-	original = NULL;
+	rgb_color = "F 10,20,30";
+	original = "F 255,255,255";
+	// rgb_color = NULL; // This will trigger a segfault
+	// original = NULL;
 	del = 'F';
 	process_rgb(&color, rgb_color, original, del);
 	printf("Color: %u\n", color);
