@@ -38,7 +38,7 @@ static int	validate_map_helper(t_game *game, int i, int j, int *count)
 			return (ZERO);
 		}
 	}
-	else if (c == '0' || is_player_pops(c))
+	else if (c == '0' || is_player_pos(c))
 	{
 		if (game->map.grid[i][j + 1] == ' ' || game->map.grid[i][j - 1] == ' '
 			|| game->map.grid[i + 1][j] == ' ' || game->map.grid[i
