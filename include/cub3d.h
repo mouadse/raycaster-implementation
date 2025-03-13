@@ -29,39 +29,38 @@
 /**
  * Enum for texture directions
  */
- typedef enum e_texture_type
- {
-	 NORTH = 0,
-	 SOUTH = 1,
-	 WEST = 2,
-	 EAST = 3
- } t_texture_type;
+typedef enum e_texture_type
+{
+	NORTH = 0,
+	SOUTH = 1,
+	WEST = 2,
+	EAST = 3
+}				t_texture_type;
 
- /**
-  * Enum for color types
-  */
- typedef enum e_color_type
- {
-	 FLOOR = 0,
-	 CEILING = 1
- } t_color_type;
+/**
+ * Enum for color types
+ */
+typedef enum e_color_type
+{
+	FLOOR = 0,
+	CEILING = 1
+}				t_color_type;
 
- /**
-  * Enum for map elements
-  */
- typedef enum e_map_element
- {
-	 EMPTY = '0',
-	 WALL = '1',
-	 SPACE = ' ',
-	 PLAYER_NORTH = 'N',
-	 PLAYER_SOUTH = 'S',
-	 PLAYER_EAST = 'E',
-	 PLAYER_WEST = 'W',
-	 VISITED = 'X',    // Used in flood fill
-	 FILL = 'F'        // Used to replace spaces for flood fill
- } t_map_element;
-
+/**
+ * Enum for map elements
+ */
+typedef enum e_map_element
+{
+	EMPTY = '0',
+	WALL = '1',
+	SPACE = ' ',
+	PLAYER_NORTH = 'N',
+	PLAYER_SOUTH = 'S',
+	PLAYER_EAST = 'E',
+	PLAYER_WEST = 'W',
+	VISITED = 'X', // Used in flood fill
+	FILL = 'F'     // Used to replace spaces for flood fill
+}				t_map_element;
 
 /********** Structures **********/
 
@@ -129,7 +128,11 @@ int				file_exists(char *file_path);
 int				is_map_line(char *line);
 int				is_numeric(char *str);
 int				is_player_pos(char c);
-int 			is_map_valid(t_game *game);
+int				is_map_valid(t_game *game);
+int				ft_isspace(char c);
+unsigned int	convert_rgb(int r, int g, int b);
+void			process_rgb(unsigned int *color, char *rgb_color,
+					char *original, char del);
 
 /********** Error Messages **********/
 
