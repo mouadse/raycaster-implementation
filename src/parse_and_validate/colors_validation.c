@@ -6,7 +6,7 @@
 /*   By: msennane <msennane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 19:48:22 by msennane          #+#    #+#             */
-/*   Updated: 2025/03/13 18:29:02 by msennane         ###   ########.fr       */
+/*   Updated: 2025/03/13 23:48:58 by msennane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,12 @@ void	process_rgb(unsigned int *color, char *rgb_color, char *original,
 	int		space_count;
 	char	*tmp;
 	char	*trimmed;
+	int		i;
+	int		j;
 
+	if (!color || !rgb_color)
+		handle_error(NULL, original ? original : "NULL", "Invalid color parameters: ");
 	rgb = NULL;
-	int i, j;
 	del_count = 0;
 	space_count = 0;
 	// Check for required delimiter and spaces
