@@ -136,4 +136,43 @@ void	parse_scene_element(t_textures *textures, char *identifier,
 		// process_rgb(&scene->ceiling, identifier, line_buffer, 'C');
 		is_ceiling = true;
 	}
+	else if (identifier[0] != '\n' && identifier[0] != '\0')
+	{
+		// free(line_buffer);
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Invalid identifier: ", 2);
+		ft_putstr_fd(identifier, 2);
+		ft_putstr_fd(" in line: ", 2);
+		ft_putstr_fd(line_buffer, 2);
+		ft_putstr_fd("\n", 2);
+		exit(ONE);
+	}
+	if (is_floor)
+	{
+		textures->floor_color_count++;
+		if (textures->floor_color_count > 1)
+		{
+			ft_putstr_fd("Error\n", 2);
+			ft_putstr_fd("Duplicate floor color definition in line: ", 2);
+			ft_putstr_fd(line_buffer, 2);
+			ft_putstr_fd("\n", 2);
+			exit(ONE);
+		}
+	}
+	if (is_ceiling)
+	{
+		textures->ceiling_color_count++;
+		if (textures->ceiling_color_count > 1)
+		{
+			ft_putstr_fd("Error\n", 2);
+			ft_putstr_fd("Duplicate ceiling color definition in line: ", 2);
+			ft_putstr_fd(line_buffer, 2);
+			ft_putstr_fd("\n", 2);
+			exit(ONE);
+		}
+	}
+	// Set colors flag when both are defined exactly once
+	if (textures->floor_color_count == 1 && textures->ceiling_color_count == 1)
+		textures->colors_complete = true;
+	textures->element_count++;
 }
