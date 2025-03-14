@@ -1,7 +1,5 @@
 #include "../include/cub3d.h"
 #include <stdio.h>
-#include "../include/cub3d.h"
-#include <stdio.h>
 
 /*
  * Fixed main function with proper error handling and memory management
