@@ -1,4 +1,5 @@
 #include "../include/cub3d.h"
+#include <stdio.h>
 
 int	main(void)
 {
@@ -26,7 +27,10 @@ int	main(void)
 		free(line);
 		if (game->textures.south_path && game->textures.west_path
 			&& game->textures.east_path) //  && game->textures.colors_complete
+		{
+			printf("Textures and colors are complete\n");
 			break ;
+		}
 		temp = get_next_line(fd);
 	}
 	if (!temp)
@@ -36,6 +40,10 @@ int	main(void)
 		return (ONE);
 	}
 	close(fd);
+	printf("NO: %s\n", game->textures.north_path);
+	printf("SO: %s\n", game->textures.south_path);
+	printf("WE: %s\n", game->textures.west_path);
+	printf("EA: %s\n", game->textures.east_path);
 	free(game);
 	return (ZERO);
 }
