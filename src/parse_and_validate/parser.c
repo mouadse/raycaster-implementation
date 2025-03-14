@@ -176,3 +176,17 @@ void	parse_scene_element(t_textures *textures, char *identifier,
 		textures->colors_complete = true;
 	textures->element_count++;
 }
+
+void	initialize_textures_data(t_textures *textures)
+{
+	// Initialize texture paths
+	textures->north_path = NULL;
+	textures->south_path = NULL;
+	textures->west_path = NULL;
+	textures->east_path = NULL;
+	// Initialize color tracking
+	textures->colors_complete = false;
+	textures->floor_color_count = 0;
+	textures->ceiling_color_count = 0;
+	textures->element_count = 0;
+}

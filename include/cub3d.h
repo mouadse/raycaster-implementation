@@ -137,7 +137,9 @@ int				ft_isspace(char c);
 unsigned int	convert_rgb(int r, int g, int b);
 void			process_rgb(unsigned int *color, char *rgb_color,
 					char *original, char del);
-
+void			initialize_textures_data(t_textures *textures);
+void			parse_scene_element(t_textures *textures, char *identifier,
+					char *line_buffer);
 /********** Error Messages **********/
 
 #endif // CUB3D_H
