@@ -1,10 +1,10 @@
 F     100,100,100
 C     200,200,200
 
-NO    ./path/to/north_texture.xpm
-SO    ./path/to/south_texture.xpm
-WE    ./path/to/west_texture.xpm
-EA    ./path/to/east_texture.xpm
+NO    ./north_texture.xpm
+SO    ./south_texture.xpm
+WE    ./west_texture.xpm
+EA    ./east_texture.xpm
 
 11111111111111111111
 10000000000000000001

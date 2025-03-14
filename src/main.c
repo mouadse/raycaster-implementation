@@ -2,18 +2,40 @@
 
 int	main(void)
 {
-	unsigned int	color;
-	char			*rgb_color;
-	char			*original;
-	char			del;
+	t_game	*game;
+	char	*map_file;
+	char	*line;
+	char	*temp;
+	int		fd;
 
-	// Time to test process_rgb
-	rgb_color = "F 10,20,30";
-	original = "F 255,255,255";
-	// rgb_color = NULL; // This will trigger a segfault
-	// original = NULL;
-	del = 'F';
-	process_rgb(&color, rgb_color, original, del);
-	printf("Color: %u\n", color);
-	return (0);
+	map_file = "map.cub";
+	fd = open(map_file, O_RDONLY);
+	if (fd < 0)
+	{
+		return (ONE);
+	}
+	game = malloc(sizeof(t_game));
+	initialize_textures_data(&(game->textures));
+	temp = get_next_line(fd);
+	while (temp)
+	{
+		line = temp;
+		while (ft_isspace(*temp))
+			temp++;
+		parse_scene_element(&(game->textures), temp, line);
+		free(line);
+		if (game->textures.south_path && game->textures.west_path
+			&& game->textures.east_path) //  && game->textures.colors_complete
+			break ;
+		temp = get_next_line(fd);
+	}
+	if (!temp)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Incomplete scene data\n", 2);
+		return (ONE);
+	}
+	close(fd);
+	free(game);
+	return (ZERO);
 }
