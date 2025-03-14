@@ -70,6 +70,10 @@ typedef struct s_textures
 	char		*south_path;
 	char		*west_path;
 	char		*east_path;
+	bool		colors_complete;
+	int			floor_color_count;
+	int			ceiling_color_count;
+	int			element_count;
 }				t_textures;
 
 typedef struct s_colors

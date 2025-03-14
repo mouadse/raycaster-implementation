@@ -107,3 +107,33 @@ void	store_texture_path(char **texture_ptr, char *raw_text, char *identifier,
 	}
 	*texture_ptr = ft_strdup(path_start);
 }
+
+void	parse_scene_element(t_textures *textures, char *identifier,
+		char *line_buffer)
+{
+	bool	is_floor;
+	bool	is_ceiling;
+
+	if (ft_strncmp("NO", identifier, 2) == 0)
+		store_texture_path(&(textures->north_path), identifier, "NO",
+			line_buffer);
+	else if (ft_strncmp("SO", identifier, 2) == 0)
+		store_texture_path(&(textures->south_path), identifier, "SO",
+			line_buffer);
+	else if (ft_strncmp("WE", identifier, 2) == 0)
+		store_texture_path(&(textures->west_path), identifier, "WE",
+			line_buffer);
+	else if (ft_strncmp("EA", identifier, 2) == 0)
+		store_texture_path(&(textures->east_path), identifier, "EA",
+			line_buffer);
+	else if (ft_strncmp("F", identifier, 1) == 0)
+	{
+		// process_rgb(&scene->floor, identifier, line_buffer, 'F');
+		is_floor = true;
+	}
+	else if (ft_strncmp("C", identifier, 1) == 0)
+	{
+		// process_rgb(&scene->ceiling, identifier, line_buffer, 'C');
+		is_ceiling = true;
+	}
+}
