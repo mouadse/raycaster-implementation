@@ -6,12 +6,11 @@
 /*   By: msennane <msennane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 19:48:22 by msennane          #+#    #+#             */
-/*   Updated: 2025/03/13 23:48:58 by msennane         ###   ########.fr       */
+/*   Updated: 2025/03/14 01:59:41 by msennane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-#include <stdio.h>
 
 unsigned int	convert_rgb(int r, int g, int b)
 {
@@ -68,7 +67,8 @@ void	process_rgb(unsigned int *color, char *rgb_color, char *original,
 	int		j;
 
 	if (!color || !rgb_color)
-		handle_error(NULL, original ? original : "NULL", "Invalid color parameters: ");
+		handle_error(NULL, original ? original : "NULL",
+			"Invalid color parameters: ");
 	rgb = NULL;
 	del_count = 0;
 	space_count = 0;
