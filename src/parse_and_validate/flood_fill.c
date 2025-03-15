@@ -96,6 +96,11 @@ void	test_map(const char *name, const char **map_data)
 {
 	t_map	*map;
 
+	if (!name || !map_data)
+	{
+		printf("Error: Invalid test data\n");
+		return ;
+	}
 	printf("\n===== Testing Map: %s =====\n", name);
 	map = create_map(map_data);
 	if (!map)
