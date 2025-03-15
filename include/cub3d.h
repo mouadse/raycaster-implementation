@@ -134,6 +134,7 @@ int				is_numeric(char *str);
 int				is_player_pos(char c);
 int				is_map_valid(t_game *game);
 int				is_valid_map(t_map *map);
+void			test_map(const char *name, const char **map_data);
 int				ft_isspace(char c);
 unsigned int	convert_rgb(int r, int g, int b);
 void			process_rgb(unsigned int *color, char *rgb_color,
