@@ -118,8 +118,8 @@ void			set_player_direction(t_player *player);
 int				starts_with(char *str, char *prefix);
 int				is_empty_line(char *line);
 int				is_cub_file(char *filename);
-void			flood_fill(char **map, int x, int y, int width, int height);
-int				flood_fill_validation(char **map, int width, int height);
+// void			flood_fill(char **map, int x, int y, int width, int height);
+// int				flood_fill_validation(char **map, int width, int height);
 int				validate_map(t_game *game);
 int				validate_textures(t_game *game);
 int				validate_game(t_game *game);
@@ -133,6 +133,7 @@ int				is_map_line(char *line);
 int				is_numeric(char *str);
 int				is_player_pos(char c);
 int				is_map_valid(t_game *game);
+int				is_valid_map(t_map *map);
 int				ft_isspace(char c);
 unsigned int	convert_rgb(int r, int g, int b);
 void			process_rgb(unsigned int *color, char *rgb_color,
