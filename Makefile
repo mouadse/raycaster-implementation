@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iinclude -I./libft -fsanitize=address -g3 -O0
+CFLAGS = -Wall -Wextra -Werror -Iinclude -I./libft #-fsanitize=address -g3 -O0
 LDFLAGS = -L./libft -lft
 
 NAME = cub3D
