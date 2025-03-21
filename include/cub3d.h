@@ -16,6 +16,7 @@
 
 /********** Includes: External Libraries **********/
 # include "../libft/libft.h"
+# include "../mlx/mlx.h"
 # include "garbage_collector.h"
 # include "queue.h"
 
