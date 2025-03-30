@@ -17,7 +17,7 @@ static int	validate_map_helper(t_game *game, int i, int j, int *count)
 {
 	char	c;
 
-	c = game->map.grid[i][j];
+	c = game->map.map_data[i][j];
 	if (!is_valid_map_char(c))
 	{
 		ft_putstr_fd("Error\nInvalid character in map\n", STDERR_FILENO);
@@ -27,8 +27,7 @@ static int	validate_map_helper(t_game *game, int i, int j, int *count)
 	}
 	if (is_player_pos(c))
 		(*count)++; // To check if there is only one player in the map
-	if (i == 0 || i == game->map.height - 1 || j == 0 || j == game->map.width
-		- 1)
+	if (i == 0 || i == game->map.rows - 1 || j == 0 || j == game->map.cols - 1)
 	{
 		if (c != '1' && c != ' ')
 		{
@@ -40,8 +39,8 @@ static int	validate_map_helper(t_game *game, int i, int j, int *count)
 	}
 	else if (c == '0' || is_player_pos(c))
 	{
-		if (game->map.grid[i][j + 1] == ' ' || game->map.grid[i][j - 1] == ' '
-			|| game->map.grid[i + 1][j] == ' ' || game->map.grid[i
+		if (game->map.map_data[i][j + 1] == ' ' || game->map.map_data[i][j - 1] == ' '
+			|| game->map.map_data[i + 1][j] == ' ' || game->map.map_data[i
 			- 1][j] == ' ')
 		{
 			ft_putstr_fd("Error\nMap is not surrounded by walls\n",
@@ -60,10 +59,10 @@ int	is_map_valid(t_game *game)
 	int	count;
 
 	count = i = 0;
-	while (game->map.grid[i])
+	while (game->map.map_data[i])
 	{
 		j = 0;
-		while (game->map.grid[i][j])
+		while (game->map.map_data[i][j])
 		{
 			if (!validate_map_helper(game, i, j, &count))
 				return (ZERO);

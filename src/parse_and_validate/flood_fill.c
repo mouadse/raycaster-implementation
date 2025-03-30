@@ -36,8 +36,8 @@ t_map	*create_map(const char **map_data)
 			cols = len;
 	}
 	// Allocate map_data
-	map->grid = malloc(sizeof(char *) * (rows + 1));
-	if (!map->grid)
+	map->map_data = malloc(sizeof(char *) * (rows + 1));
+	if (!map->map_data)
 	{
 		free(map);
 		return (NULL);
@@ -45,20 +45,20 @@ t_map	*create_map(const char **map_data)
 	// Copy map data
 	for (i = 0; i < rows; i++)
 	{
-		map->grid[i] = ft_strdup(map_data[i]);
-		if (!map->grid[i])
+		map->map_data[i] = ft_strdup(map_data[i]);
+		if (!map->map_data[i])
 		{
 			// Clean up on failure
 			while (--i >= 0)
-				free(map->grid[i]);
-			free(map->grid);
+				free(map->map_data[i]);
+			free(map->map_data);
 			free(map);
 			return (NULL);
 		}
 	}
-	map->grid[rows] = NULL;
-	map->height = rows;
-	map->width = cols;
+	map->map_data[rows] = NULL;
+	map->rows = rows;
+	map->cols = cols;
 	return (map);
 }
 
@@ -69,11 +69,11 @@ void	free_map(t_map *map)
 	i = 0;
 	if (!map)
 		return ;
-	if (map->grid)
+	if (map->map_data)
 	{
-		while (map->grid[i])
-			free(map->grid[i++]);
-		free(map->grid);
+		while (map->map_data[i])
+			free(map->map_data[i++]);
+		free(map->map_data);
 	}
 	free(map);
 }
@@ -83,10 +83,10 @@ void	print_map(t_map *map)
 	int	i;
 
 	i = 0;
-	printf("Map (%d rows, %d cols):\n", map->height, map->width);
-	while (map->grid[i])
+	printf("Map (%d rows, %d cols):\n", map->rows, map->cols);
+	while (map->map_data[i])
 	{
-		printf("[%2d] %s\n", i, map->grid[i]);
+		printf("[%2d] %s\n", i, map->map_data[i]);
 		i++;
 	}
 	printf("\n");
@@ -138,12 +138,12 @@ static int	find_player_position(t_map *map, int *x, int *y)
 
 	i = 0;
 	found = 0;
-	while (map->grid[i])
+	while (map->map_data[i])
 	{
 		j = 0;
-		while (map->grid[i][j])
+		while (map->map_data[i][j])
 		{
-			if (is_player_position(map->grid[i][j]))
+			if (is_player_position(map->map_data[i][j]))
 			{
 				*x = j;
 				*y = i;
@@ -167,15 +167,15 @@ static int	check_valid_chars(t_map *map)
 	int	j;
 
 	i = 0;
-	while (map->grid[i])
+	while (map->map_data[i])
 	{
 		j = 0;
-		while (map->grid[i][j])
+		while (map->map_data[i][j])
 		{
-			if (!is_valid_map_char(map->grid[i][j]))
+			if (!is_valid_map_char(map->map_data[i][j]))
 			{
 				printf("Error\nInvalid character in map: {%c}\n",
-					map->grid[i][j]);
+					map->map_data[i][j]);
 				return (0);
 			}
 			j++;
@@ -194,12 +194,12 @@ static char	**create_map_copy(t_map *map)
 	int		i;
 
 	i = 0;
-	copy = (char **)malloc(sizeof(char *) * (map->height + 1));
+	copy = (char **)malloc(sizeof(char *) * (map->rows + 1));
 	if (!copy)
 		return (NULL);
-	while (map->grid[i])
+	while (map->map_data[i])
 	{
-		copy[i] = ft_strdup(map->grid[i]);
+		copy[i] = ft_strdup(map->map_data[i]);
 		if (!copy[i])
 		{
 			// Free previously allocated rows on failure
@@ -269,7 +269,7 @@ static int	check_flood_boundaries(char **map_copy, t_map *map)
 			if (map_copy[i][j] == 'V')
 			{
 				// Check if cell is on map edge
-				if (i == 0 || i == map->height - 1 || j == 0 || map_copy[i][j
+				if (i == 0 || i == map->rows - 1 || j == 0 || map_copy[i][j
 					+ 1] == '\0')
 				{
 					printf("Error\nMap is not enclosed by walls (edge boundary at %d,%d)\n", j, i);
@@ -336,7 +336,7 @@ int	is_valid_map(t_map *map)
 			&player_y))
 		return (0);
 	printf("DEBUG: Player position found at (%d,%d) = '%c'\n", player_x,
-		player_y, map->grid[player_y][player_x]);
+		player_y, map->map_data[player_y][player_x]);
 	// Create a copy of the map for flood fill
 	map_copy = create_map_copy(map);
 	if (!map_copy)

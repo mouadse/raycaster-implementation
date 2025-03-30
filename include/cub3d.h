@@ -90,10 +90,10 @@ typedef struct s_colors
 
 typedef struct s_map
 {
-	char		**grid;
-	int			width;
-	int			height;
-}				t_map;
+	int					cols;
+	int					rows;
+	char				**map_data;
+}						t_map;
 
 typedef struct s_player
 {
