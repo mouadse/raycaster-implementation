@@ -6,7 +6,7 @@
 /*   By: msennane <msennane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 03:41:00 by msennane          #+#    #+#             */
-/*   Updated: 2025/03/30 04:25:30 by msennane         ###   ########.fr       */
+/*   Updated: 2025/03/30 04:45:40 by msennane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	draw_line(t_params *params, t_point p1, t_point p2, int color)
 	err = d.x + d.y;
 	while (1)
 	{
-		mlx__put(params->mlx, params->win, p1.x, p1.y, color);
+		mlx_pixel_put(params->mlx, params->win, p1.x, p1.y, color);
 		if (p1.x == p2.x && p1.y == p2.y)
 			break ;
 		e2 = 2 * err;
