@@ -202,4 +202,36 @@ typedef struct s_wall
 	int			wall_y;
 }				t_wall;
 
+typedef struct s_params
+{
+	void		*mlx;
+	void		*win;
+	t_img		window_img;
+
+	t_map		map;
+	// t_map_infos			map_infos; // To be implemented later
+
+	t_player	player;
+	t_ray		ray;
+
+	t_img		north_texture;
+	t_img		south_texture;
+	t_img		west_texture;
+	t_img		east_texture;
+
+	int			floor_color;
+	int			ceiling_color;
+
+	t_wall		wall;
+
+}				t_params;
+
+int				put_pixel(t_params *params, int x, int y, int color);
+void			bresenham_algorithm(t_point p1, t_point p2, t_point *delta,
+					t_point *sign);
+void			draw_line(t_params *params, t_point p1, t_point p2, int color);
+void			draw_line_img(t_params *params, t_point p1, t_point p2,
+					int color);
+
+
 #endif // CUB3D_H
