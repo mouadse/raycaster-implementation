@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Iinclude -I./libft
+CFLAGS = -Wall -Wextra -Iinclude -I./libft -D DRAW_MINIMAP
 NAME = cub3D
 SRC = $(shell find src -name '*.c')
 OBJ = $(SRC:.c=.o)

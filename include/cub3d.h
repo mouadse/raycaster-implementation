@@ -221,7 +221,7 @@ typedef struct s_params
 
 	int			floor_color;
 	int			ceiling_color;
-
+	double  dist_proj_plane; // Distance to projection plane for 3D rendering
 	t_wall		wall;
 
 }				t_params;
