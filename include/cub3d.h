@@ -30,6 +30,7 @@
 /**
  * Enum for texture directions
  */
+
 typedef enum e_texture_type
 {
 	NORTH = 0,
@@ -87,21 +88,22 @@ typedef struct s_colors
 	int			ceiling_b;
 }				t_colors;
 
-typedef struct s_player
-{
-	double		pos_x;
-	double		pos_y;
-	double		dir_x;
-	double		dir_y;
-	char orientation; // 'N', 'S', 'E', or 'W'
-}				t_player;
-
 typedef struct s_map
 {
 	char		**grid;
 	int			width;
 	int			height;
 }				t_map;
+
+typedef struct s_player
+{
+	double		x;
+	double		y;
+	double		dx;
+	double		dy;
+	double		direction;
+	double		fov;
+}				t_player;
 
 typedef struct s_game
 {
@@ -144,5 +146,60 @@ void			initialize_textures_data(t_textures *textures);
 void			parse_scene_element(t_textures *textures, char *identifier,
 					char *line_buffer);
 /********** Error Messages **********/
+
+/********** Graphics **********/
+
+# define WINDOW_WIDTH 1024
+# define WINDOW_HEIGHT 1024
+# define RESOLUTION 1024
+# define TILE_SIZE 64
+# define TEXTURE_SIZE 64
+# define MOVE_SPEED 40
+# define ROTATE_SPEED 0.2
+# define HORIZONTAL 0
+# define VERTICAL 1
+
+typedef struct s_point
+{
+	int			x;
+	int			y;
+}				t_point;
+
+typedef struct s_fpoint
+{
+	float		x;
+	float		y;
+}				t_fpoint;
+
+typedef struct s_img
+{
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			bpp;
+	int			line_length;
+	int			endian;
+	int			width;
+	int			height;
+}				t_img;
+
+typedef struct s_ray
+{
+	double		x;
+	double		y;
+	double		direction;
+	double		length;
+	int			hit;
+}				t_ray;
+
+typedef struct s_wall
+{
+	double		wall_height;
+	char		*wall_texture;
+	t_img		*texture_img;
+	int			texture_x;
+	int			texture_y;
+	int			wall_y;
+}				t_wall;
 
 #endif // CUB3D_H
