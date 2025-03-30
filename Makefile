@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Iinclude -I./libft -D DRAW_MINIMAP
+CFLAGS = -Wall -Wextra -Iinclude -I./libft -D DRAW_MINIMAP #-fsanitize=address,leak,undefined -g3 -O0
 NAME = cub3D
 SRC = $(shell find src -name '*.c')
 OBJ = $(SRC:.c=.o)
