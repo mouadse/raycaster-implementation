@@ -90,10 +90,10 @@ typedef struct s_colors
 
 typedef struct s_map
 {
-	int					cols;
-	int					rows;
-	char				**map_data;
-}						t_map;
+	int			cols;
+	int			rows;
+	char		**map_data;
+}				t_map;
 
 typedef struct s_player
 {
@@ -233,5 +233,11 @@ void			draw_line(t_params *params, t_point p1, t_point p2, int color);
 void			draw_line_img(t_params *params, t_point p1, t_point p2,
 					int color);
 
+t_fpoint		find_vertical_wall_intersection(t_params *params,
+					double ray_angle);
+t_fpoint		find_horizontal_wall_intersection(t_params *params,
+					double ray_angle);
+double			calculate_euclidean_distance(double x1, double y1, double x2,
+					double y2);
 
 #endif // CUB3D_H
